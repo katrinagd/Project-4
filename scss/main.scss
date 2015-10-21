@@ -130,20 +130,32 @@ body {
     font-size: 1rem;
   }
 
-  .form{ 
-    max-width: 250px; 
-    color: #ed4343; 
+ /*-----------------------------------------*/
+/* form */
+/*-----------------------------------------*/
+
+.form{ 
+    max-width: 85%; 
+    min-width: 300px; 
+    border-width: 0; 
+    border-color: #cccccc; 
+    border-radius: 1px; 
+    border-style: solid; 
+    color: #F71616; 
     font-size: 14px; 
+    margin: 5px; 
     background-color: #000000; 
-  } 
+    padding: 20px; 
+} 
 .content{ 
     margin: 0px; 
 } 
 .form label{ 
-    color: #ed4343; 
+    color: #F71616; 
     font-size: 14px; 
     display: block; 
 } 
+
 .form input[type=radio], input[type=checkbox]{ 
     margin: 10px; 
     width: 13px; 
@@ -157,10 +169,33 @@ body {
     border-color: #000000; 
     border-radius: 0px; 
     padding: 5px; 
-    width: 100%; 
+    width: 100%;
+    color: #F71616; 
+} 
+.form, .form h1, .form h2{ 
+    font-family: 'Raleway', sans-serif;
+
+} 
+.form h1{ 
+    font-size: 40px; 
+    color: #FfFfFf; 
+    padding: 0px; 
+    margin: 0px; 
+    margin-bottom: 15px; 
+    border-bottom-color: #CCCCCC; 
+    border-bottom-width: 0px; 
+    border-radius: 0px; 
+    background-color: #000000; 
+} 
+.intro{ 
+    margin-bottom: 10px; 
 } 
 .clear{ 
     clear: both; 
+} 
+.form textarea{ 
+    height: 10px; 
+    width: 100%; 
 } 
 .form input[type=submit]{ 
     width: 100%; 
@@ -169,4 +204,14 @@ body {
 } 
 .field{ 
     margin-bottom: 20px; 
-} 
+}
+
+
+/*-----------------------------------------*/
+/* Encounter */
+
+
+ul {
+  list-style: none;
+  text-align: left;
+}

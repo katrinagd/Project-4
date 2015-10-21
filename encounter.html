@@ -23,7 +23,9 @@
           <li>Monday, Oct 19 - Lizard<br />
           Smoked it</li>
       </ul>
-      <div class="field"><input type="submit" id="Report-Encounter" name="Report Encounter></div>
-    </div>
-  </body>
+      <div ng-app="formApp" ng-controller="formController">
+      <form  id="form" class="form" name="form" ng-submit="submitForm(form.$valid)" novalidate method="post" target="#" enctype="text/plain" accept-charset="UTF-8">
+        <div class="field"></div><label for="Submit"></label><p ng-show="form.input.$error.requered"  class="help-block"></p><input  type="submit" id="Report-Encounter" name="Report Encounter" value="Report Encounter"></div>
+      
+      </body>
 </html>
