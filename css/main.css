@@ -1,3 +1,50 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
 /*-----------------------------------------*/
 /* Fonts */
 /*-----------------------------------------*/
@@ -23,6 +70,71 @@
   font-weight: bold;
   font-style: italic; }
 
+/* Container used for styling the custom select, the buttom class below adds the bg gradient, corners, etc. */
+.custom-select {
+  position: relative;
+  height: 2rem;
+  display: block;
+  padding: 0;
+  width: 100%; }
+
+/* This is the native select, we're making everything but the text invisible so we can see the button styles in the wrapper */
+.custom-select select {
+  width: 100%;
+  margin: 0;
+  background: none;
+  border: 1px solid transparent;
+  outline: none;
+  box-sizing: border-box;
+  /* Remove select styling */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; }
+
+/* Custom arrow sits on top of the select - could be an image, SVG, icon font, etc. or the arrow could just baked into the bg image on the select. Note this si a 2x image so it will look bad in browsers that don't support background-size. In production, you'd handle this resolution switch via media query but this is a demo. */
+.custom-select::after {
+  content: "";
+  position: absolute;
+  pointer-events: none; }
+
+/* Hover style */
+/* Focus style */
+.custom-select select:focus {
+  outline: none; }
+
+/* ------------------------------------  */
+/* START OF UGLY BROWSER-SPECIFIC HACKS */
+/* ----------------------------------  */
+/* OPERA - Pre-Blink nix the custom arrow, go with a native select button to keep it simple. Targeted via this hack http://browserhacks.com/#hack-a3f166304aafed524566bc6814e1d5c7 */
+x:-o-prefocus, .custom-select::after {
+  display: none; }
+
+/* IE 10/11+ - This hides native dropdown button arrow so it will have the custom appearance, IE 9 and earlier get a native select - targeting media query hack via http://browserhacks.com/#hack-28f493d247a12ab654f6c3637f6978d5 - looking for better ways to achieve this targeting */
+/* The second rule removes the odd blue bg color behind the text in the select button in IE 10/11 and sets the text color to match the focus style's - fix via http://stackoverflow.com/questions/17553300/change-ie-background-color-on-unopened-focused-select-box */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .custom-select select::-ms-expand {
+    display: none; }
+  .custom-select select:focus::-ms-value {
+    background: transparent;
+    color: #222; } }
+
+/* FIREFOX won't let us hide the native select arrow, so we have to make it wider than needed and clip it via overflow on the parent container. The percentage width is a fallback since FF 4+ supports calc() so we can just add a fixed amount of extra width to push the native arrow out of view. We're applying this hack across all FF versions because all the previous hacks were too fragile and complex. You might want to consider not using this hack and using the native select arrow in FF. Note this makes the menus wider than the select button because they display at the specified width and aren't clipped. Targeting hack via http://browserhacks.com/#hack-758bff81c5c32351b02e10480b5ed48e */
+/* Show only the native arrow */
+@-moz-document url-prefix() {
+  .custom-select {
+    overflow: hidden; }
+  .custom-select select {
+    width: 120%;
+    width: calc(100% + em); } }
+
+/* Firefox focus has odd artifacts around the text, this kills that. See https://developer.mozilla.org/en-US/docs/Web/CSS/:-moz-focusring */
+.custom-select select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000; }
+
+/* ------------------------------------  */
+/*  END OF UGLY BROWSER-SPECIFIC HACKS  */
+/* ------------------------------------  */
 /*-----------------------------------------*/
 /* Extra Resetting */
 /*-----------------------------------------*/
@@ -35,12 +147,25 @@
 html, body {
   width: 100%;
   height: 100%;
+  margin: 0;
   font-family: "Raleway", serif;
   font-size: 18px; }
 
+.wrapper {
+  width: 100%;
+  height: 100%; }
+
 .site-container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  height: 100vh; }
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100vh;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
 
 h1, h2, h3 {
   color: #fff; }
@@ -52,14 +177,23 @@ h2 {
   font-size: 1.8rem; }
 
 h3 {
-  font-size: 1.5rem; }
+  font-size: 1.1rem; }
+
+a {
+  text-decoration: none;
+  color: white;
+  font-family: 'Raleway', sans-serif; }
 
 /*-----------------------------------------*/
 /* Welcome page */
 /*-----------------------------------------*/
 .welcome-page {
-  align-items: center;
-  justify-content: space-around;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
   background: #ed4343; }
 
 h1 {
@@ -70,9 +204,19 @@ h2 {
   font-weight: 400;
   text-align: center; }
 
-.enter-button a {
-  display: block;
-  align-content: center;
+body {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100vh; }
+
+.enter-button {
   width: 75px;
   height: 75px;
   background: #fff;
@@ -80,13 +224,15 @@ h2 {
   -webkit-animation: border-pulse 1s infinite;
   animation: border-pulse 1s infinite; }
 
-body {
-  background: #ed4343;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh; }
+@-webkit-keyframes border-pulse {
+  0% {
+    box-shadow: 0 0 0 1rem rgba(255, 255, 255, 0.1), 0 0 0 2rem rgba(255, 255, 255, 0.15), 0 0 0 3rem rgba(255, 255, 255, 0.2); }
+  50% {
+    box-shadow: 0 0 0 1.25rem rgba(255, 255, 255, 0.1), 0 0 0 2.75rem rgba(255, 255, 255, 0.1), 0 0 0 4rem rgba(255, 255, 255, 0); }
+  75% {
+    box-shadow: 0 0 0 1.5rem rgba(255, 255, 255, 0.1), 0 0 0 3rem rgba(255, 255, 255, 0), 0 0 0 5rem rgba(255, 255, 255, 0); }
+  100% {
+    box-shadow: 0 0 0 1.75rem rgba(255, 255, 255, 0), 0 0 0 3.75rem rgba(255, 255, 255, 0), 0 0 0 6rem rgba(255, 255, 255, 0); } }
 
 @keyframes border-pulse {
   0% {
@@ -103,13 +249,16 @@ body {
   height: 100px;
   border-radius: 50%;
   background: white;
-  animation: border-pulse 2s infinite ease-in-out; }
+  -webkit-animation: border-pulse 2s infinite ease-in-out;
+          animation: border-pulse 2s infinite ease-in-out; }
 
 /*-----------------------------------------*/
 /* Check-in */
 /*-----------------------------------------*/
 .check-in {
-  flex-direction: column;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   background: #000; }
 
 .page-heading {
@@ -120,8 +269,6 @@ body {
 /* form */
 /*-----------------------------------------*/
 .form {
-  max-width: 85%;
-  min-width: 300px;
   border-width: 0;
   border-color: #cccccc;
   border-radius: 1px;
@@ -130,31 +277,62 @@ body {
   font-size: 14px;
   margin: 5px;
   background-color: #000000;
-  padding: 20px; }
+  padding: 10px 20px 30px 20px; }
 
 .content {
   margin: 0px; }
 
-.form label {
-  color: #F71616;
-  font-size: 14px;
-  display: block; }
-
 .form input[type=radio], input[type=checkbox] {
   margin: 10px;
   width: 13px; }
+
+.form input {
+  line-height: 1.5rem; }
 
 .form div {
   display: block; }
 
 .form input, form textarea, form select {
   border-width: 0px;
-  border-style: solid;
-  border-color: #000000;
-  border-radius: 0px;
   padding: 5px;
   width: 100%;
+  color: #F71616;
+  margin-bottom: 5px; }
+
+::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: #F71616;
+  font-size: 1rem;
+  padding-left: 0.5rem;
+  font-family: 'Raleway'; }
+
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #F71616;
+  opacity: 1; }
+
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #F71616;
+  opacity: 1; }
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
   color: #F71616; }
+
+.custom-select {
+  height: 2rem;
+  background: white; }
+  .custom-select select {
+    font-size: 1rem;
+    padding-left: 0.5rem;
+    font-family: 'Raleway'; }
+  .custom-select select.placeholder {
+    color: red; }
+
+.show-errors input.ng-invalid, .show-errors textarea.ng-invalid, .show-errors .custom-select select.ng-invalid {
+  border: 2px solid red;
+  border-radius: 0; }
 
 .form, .form h1, .form h2 {
   font-family: 'Raleway', sans-serif; }
@@ -176,20 +354,79 @@ body {
 .clear {
   clear: both; }
 
-.form textarea {
-  height: 10px;
-  width: 100%; }
-
 .form input[type=submit] {
   width: 100%;
   background-color: #ed4343;
   color: #FFFFFF; }
 
 .field {
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  height: 2rem;
+  background: white; }
 
 /*-----------------------------------------*/
 /* Encounter */
 ul {
   list-style: none;
   text-align: left; }
+
+li {
+  padding: 0.5rem; }
+
+.ecounters-page {
+  background: #FFF; }
+
+.page-heading {
+  color: #000;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 1rem; }
+
+.page-sub-heading {
+  color: #000;
+  font-size: 1rem;
+  text-align: center;
+  padding: 0 1rem;
+  font-weight: bold;
+  margin-bottom: 1rem; }
+  .page-sub-heading .white {
+    color: #FFFFFF; }
+
+.encounter-footer {
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background: #000;
+  -webkit-flex: .5;
+      -ms-flex: .5;
+          flex: .5;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+.encounter-list {
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 0 1rem 2rem;
+  overflow: scroll; }
+
+.button {
+  padding: 0.5rem 0.5rem;
+  background: #ed4343;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Raleway', sans-serif; }
+
+/*report*/
+.page-sub-heading-white {
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+  padding: 0 1rem;
+  font-weight: bold;
+  margin-bottom: 1rem; }

@@ -11,21 +11,30 @@
 
   </head>
 
-  <body class="site-container">
-    <div>
-      <h1>Recent Encounters</h1>
-      <h3>See an Alient? Report it!</h3>
-      <ul>
-        <li>Monday, Oct 19 - Lizard<br />
+  <body class="site-container ecounters-page">
+    
+      <h1 class="page-heading" >Recent Encounters</h1>
+      <h3 class="page-sub-heading">See an Alient? Report it!</h3>
+      <ul class="encounter-list">
+        <li>Monday, Oct 19 - Lizard<br /> Smoked it</li>
+          <li>Monday, Oct 19 - Lizard<br />
+          Smoked it</li>
+          <li>Monday, Oct 19 - Lizard<br />
+          Smoked it</li>
+          <li>Monday, Oct 19 - Lizard<br />
+          Smoked it</li>
+          <li>Monday, Oct 19 - Lizard<br />
+          Smoked it</li>
+          <li>Monday, Oct 19 - Lizard<br />
           Smoked it</li>
           <li>Monday, Oct 19 - Lizard<br />
           Smoked it</li>
           <li>Monday, Oct 19 - Lizard<br />
           Smoked it</li>
       </ul>
-      <div ng-app="formApp" ng-controller="formController">
-      <form  id="form" class="form" name="form" ng-submit="submitForm(form.$valid)" novalidate method="post" target="#" enctype="text/plain" accept-charset="UTF-8">
-        <div class="field"></div><label for="Submit"></label><p ng-show="form.input.$error.requered"  class="help-block"></p><input  type="submit" id="Report-Encounter" name="Report Encounter" value="Report Encounter"></div>
-      
+      <footer class="encounter-footer">
+              <div class="button"><a href="/report.html">Report Encounter</a></div>
+      </footer>
+
       </body>
 </html>

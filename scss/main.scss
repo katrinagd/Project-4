@@ -1,4 +1,7 @@
+@import "reset";
 @import "fonts";
+@import "variables";
+@import "custom.select";
 /*-----------------------------------------*/
 /* Extra Resetting */
 /*-----------------------------------------*/
@@ -14,13 +17,21 @@
 html, body {
     width: 100%;
     height: 100%;
+    margin: 0;
     font-family: "Raleway", serif;
     font-size: 18px;
 }
 
+.wrapper {
+    width: 100%;
+    height: 100%;
+}
+
 .site-container {
     display: flex;
+    flex-direction: column;
     height: 100vh;
+    justify-content: space-between;
 }
 
 h1, h2, h3 {
@@ -33,9 +44,14 @@ h2 {
     font-size: 1.8rem;
 }
 h3 {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
 }
 
+a {
+  text-decoration: none;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+}
 /*-----------------------------------------*/
 /* Welcome page */
 /*-----------------------------------------*/
@@ -56,9 +72,16 @@ h2 {
     text-align: center;
 }
 
-.enter-button a {
-    display: block;
-    align-content: center;
+body {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  height:100vh;
+}
+
+.enter-button {
+    
+    
     width: 75px;
     height: 75px;
     background: #fff;
@@ -67,14 +90,7 @@ h2 {
     animation: border-pulse 1s infinite;
 }
 
-body {
-  background: #ed4343;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  height:100vh;
-}
+
 
 @keyframes border-pulse {
   0%   { 
@@ -135,8 +151,7 @@ body {
 /*-----------------------------------------*/
 
 .form{ 
-    max-width: 85%; 
-    min-width: 300px; 
+    
     border-width: 0; 
     border-color: #cccccc; 
     border-radius: 1px; 
@@ -145,37 +160,86 @@ body {
     font-size: 14px; 
     margin: 5px; 
     background-color: #000000; 
-    padding: 20px; 
+    padding: 10px 20px 30px 20px; 
 } 
 .content{ 
     margin: 0px; 
-} 
-.form label{ 
-    color: #F71616; 
-    font-size: 14px; 
-    display: block; 
 } 
 
 .form input[type=radio], input[type=checkbox]{ 
     margin: 10px; 
     width: 13px; 
 } 
+
+.form input {
+  line-height: 1.5rem;
+}
 .form div{ 
     display: block; 
 } 
+
 .form input, form textarea, form select{ 
     border-width: 0px; 
-    border-style: solid; 
-    border-color: #000000; 
-    border-radius: 0px; 
     padding: 5px; 
     width: 100%;
     color: #F71616; 
-} 
+    margin-bottom: 5px;
+
+
+  }
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #F71616;
+    font-size:1rem;
+    padding-left:0.5rem;
+    font-family: 'Raleway';
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: #F71616;
+   opacity: 1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #F71616;
+       opacity: 1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #F71616;
+}
+
+.custom-select {
+        height:2rem;
+        background:white;
+
+        select {
+            font-size:1rem;
+            padding-left:0.5rem;
+            font-family: 'Raleway';
+        }
+
+        select.placeholder {
+            color:red;
+        }
+    }
+
+// .show-errors{
+//   transition: 0.4s linear all;
+// }
+
+.show-errors{
+  input, textarea, .custom-select select{
+    &.ng-invalid{
+      // box-shadow: 0 0 0 0.4rem red;
+      border: 2px solid red;
+      border-radius: 0;
+      }
+  }
+  }
+
 .form, .form h1, .form h2{ 
     font-family: 'Raleway', sans-serif;
 
 } 
+
 .form h1{ 
     font-size: 40px; 
     color: #FfFfFf; 
@@ -193,10 +257,7 @@ body {
 .clear{ 
     clear: both; 
 } 
-.form textarea{ 
-    height: 10px; 
-    width: 100%; 
-} 
+
 .form input[type=submit]{ 
     width: 100%; 
     background-color: #ed4343; 
@@ -204,6 +265,10 @@ body {
 } 
 .field{ 
     margin-bottom: 20px; 
+    height:2rem;
+    background:white;
+
+
 }
 
 
@@ -215,3 +280,64 @@ ul {
   list-style: none;
   text-align: left;
 }
+
+li {
+  padding: 0.5rem;
+}
+.ecounters-page {
+  background: #FFF;
+}
+
+.page-heading {
+    color: #000;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+
+.page-sub-heading{
+  color: #000;
+  font-size: 1rem;
+  text-align: center;
+  padding: 0 1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  .white {
+    color:#FFFFFF;
+  }
+}
+
+.encounter-footer {
+  flex-direction: column;
+  display: flex;
+  background: #000;
+  flex: .5;
+  justify-content: center;
+}
+
+.encounter-list {
+    flex: 1;
+    padding: 0 1rem 2rem;
+    overflow: scroll;
+}
+.button {
+    padding: 0.5rem 0.5rem;
+    background: #ed4343;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Raleway', sans-serif;
+}
+
+
+
+/*report*/
+
+.page-sub-heading-white{
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+  padding: 0 1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  }

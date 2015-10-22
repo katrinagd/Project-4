@@ -1,33 +1,39 @@
-<!DOCTYPE html>
-<html>
-  <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+<div class="wrapper">
+ <div ng-app="formApp" ng-controller="ReportFormController" class="site-container check-in">
+    
 
-      <title>Report</title>
+<!-- FORM -->
 
-      <!-- CSS files -->
-      <link rel="stylesheet" href="css/main.css">
+  <form id="form" class="form" name="form" ng-submit="submitForm(form.$valid)" novalidate method="post" target="#" enctype="text/plain" accept-charset="UTF-8" ng-class="{'show-errors':showErrors}">
+    <h1>Report Encounter</h1>
+    <h3 class="page-sub-heading-white">Saftey on Mars is your responsibility</h3>
+    <div class="content">
+        
+        <div id="section0" >
+                
+            <!-- alient type -->
+<div class="field">
+        <div class="custom-select">
+              <select id="alientType" ng-model="formData.alientType" required>
+                <option value="">Select alient type</option>
+                <option value="Lizard Man">Lizard Man</option>
+                <option value="Giant Slug">Giant Slug</option>
+                <option value="Rogue Android">Rogue Android</option>
+                <option value="Octospider">Octospider</option>
+                <option value="Spiderpus">Spiderpus</option>
+        </select></div></div>
+              
 
-  </head>
 
-  <body class="site-container check-in">
-    <div>
-      <h1 class="page-heading">Who are you?</h1>
-           <form id="form" class="form" name="form" method="post" target="#" enctype="text/plain" accept-charset="UTF-8" novalidate>
-        <div class="content">
-            <div id="section0" >
-            <div class="field"><div class="edit-options"><div class="edit"></div><div class="delete"></div></div><input type="text" id="Name" name="Name" placeholder="Name" required></div>
-            <div class="field"><input type="text" id="Age" name="age" placeholder="Age"></div>
-            <div class="field"><select id="occupation"><option value>Select occupation</option><option value>Janitor</option><option value>Alient hunter</option><option value>Dust farmer</option><option value>Battery technitian</option><option value>Yoga teacher</option></select></div>
-            <div class="field"><input type="submit" id="Check-in" name="Check in"></div>
+              <!-- action taken -->
+
+          <textarea ng-class="{ 'has-error' : erroraction }"placeholder="Action taken" ng-model="formData.action" name="action" id="action" rows="10" required=""></textarea>
+                     
+
+ <!-- check in -->
+            <div class="button"><label for="Submit"></label><input  type="submit" id="Submit-Report" name="Submit Report" value="Submit"></div>
         </div>
-    </div>
+    </div> 
 </form>
-<a href="/encounter.html">Encounter</a>          
-                      
-                  
 
-    </div>
-  </body>
-</html>
+</div>
