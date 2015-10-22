@@ -1,6 +1,7 @@
 'use strict';
 var gulp = require('gulp');// Load Gulp!
 var browserSync = require('browser-sync').create();
+var historyApiFallback = require('connect-history-api-fallback');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 gulp.task('scss', function () {
@@ -14,7 +15,8 @@ gulp.task('scss', function () {
 gulp.task('browser-sync', function() {
     browserSync.init({
         server: {
-            baseDir: "./"
+            baseDir: "./",
+            middleware: [ historyApiFallback() ]
         }
     });
 
