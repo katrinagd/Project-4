@@ -96,6 +96,8 @@ $scope.submitForm= function(){
 
 if ($scope.form.$invalid){
 	$scope.showErrors=true;
+} else {
+    alert('Report filed!');
 }
 };
 
