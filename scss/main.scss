@@ -1,6 +1,7 @@
 @import "reset";
 @import "fonts";
 @import "variables";
+@import "animations";
 @import "custom.select";
 /*-----------------------------------------*/
 /* Extra Resetting */
@@ -18,7 +19,7 @@ html, body {
     width: 100%;
     height: 100%;
     margin: 0;
-    font-family: "Raleway", serif;
+    font-family: $font;
     font-size: 18px;
 }
 
@@ -39,6 +40,7 @@ h1, h2, h3 {
 }
 h1 {
     font-size: 2rem;
+    font-weight: 400;
 }
 h2 {
     font-size: 1.8rem;
@@ -50,7 +52,7 @@ h3 {
 a {
   text-decoration: none;
   color: white;
-  font-family: 'Raleway', sans-serif;
+  font-family: $font;
 }
 /*-----------------------------------------*/
 /* Welcome page */
@@ -75,12 +77,10 @@ h2 {
 body {
   display:flex;
   flex-direction:column;
-  justify-content:center;
   height:100vh;
 }
 
 .enter-button {
-    
     
     width: 75px;
     height: 75px;
@@ -192,7 +192,7 @@ body {
     color: $red-color;
     font-size:1rem;
     padding-left:0.5rem;
-    font-family: 'Raleway';
+    font-family: $font;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
    color: $red-color;
@@ -213,7 +213,7 @@ body {
         select {
             font-size:1rem;
             padding-left:0.5rem;
-            font-family: 'Raleway';
+            font-family: $font;
         }
 
         select.placeholder {
@@ -225,18 +225,64 @@ body {
 //   transition: 0.4s linear all;
 // }
 
+// .show-errors{
+//   input, textarea, .custom-select select{
+//     &.ng-invalid{
+//       // box-shadow: 0 0 0 0.4rem red;
+//       border: 2px solid $red-color;
+//       border-radius: 0;
+//       }
+//   }
+//   }
+
 .show-errors{
-  input, textarea, .custom-select select{
-    &.ng-invalid{
-      // box-shadow: 0 0 0 0.4rem red;
-      border: 2px solid red;
-      border-radius: 0;
-      }
-  }
-  }
+    transition: 0.5s linear all;
+}
+.show-errors{
+    input, textarea, .custom-select select {
+        &.ng-invalid{
+            border-radius: 0;
+            animation: show-errors 0.5s infinite;
+        }
+    }
+}
+@keyframes show-errors {
+    0%   { 
+        box-shadow:
+        0 0 0 0.2rem rgba(237, 67, 67, 0.1),
+        0 0 0 0.4rem rgba(237, 67, 67, 0.1),
+        0 0 0 0.5rem rgba(237, 67, 67, 0.1);
+    }
+    50%  {      
+
+        box-shadow:
+        0 0 0 0.5rem rgba(237, 67, 67, 0.1),
+        0 0 0 0.7rem rgba(237, 67, 67, 0.1),
+        0 0 0 0.8rem rgba(237, 67, 67, 0.1);
+
+    }
+    75%  {      
+
+        box-shadow:
+        0 0 0 0.3rem rgba(237, 67, 67, 0.1),
+        0 0 0 0.5rem rgba(237, 67, 67, 0.1),
+        0 0 0 0.9rem rgba(237, 67, 67, 0.1);
+
+    }
+    100% {
+
+        box-shadow:
+        0 0 0 0.6rem rgba(237, 67, 67, 0.1),
+        0 0 0 0.8rem rgba(237, 67, 67, 0.1),
+        0 0 0 1rem rgba(237, 67, 67, 0.1);
+
+    }
+}
+
+
 
 .form, .form h1, .form h2{ 
-    font-family: 'Raleway', sans-serif;
+    font-family: $font;
 
 } 
 
@@ -330,7 +376,7 @@ li {
     color: #fff;
     text-align: center;
     text-decoration: none;
-    font-family: 'Raleway', sans-serif;
+    font-family: $font;
 }
 
 

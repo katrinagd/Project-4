@@ -48,6 +48,7 @@ table {
 /*-----------------------------------------*/
 /* Fonts */
 /*-----------------------------------------*/
+/* latin */
 @font-face {
   font-family: 'Raleway';
   font-style: normal;
@@ -55,20 +56,111 @@ table {
   src: local("Raleway"), url(https://fonts.gstatic.com/s/raleway/v9/0dTEPzkLWceF7z0koJaX1A.woff2) format("woff2");
   unicode-range: U0-0FF, U131, U152-153, U2C 6, U2DA, U2DC, U2000-206F, U2074, U20AC, U2212, U2215, UE0FF, UEFFD, UF000; }
 
-/* Open Sans */
+/* latin */
 @font-face {
-  font-family: 'open_sans';
-  src: url("../fonts/opensans-bold-webfont.eot");
-  src: url("../fonts/opensans-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans-bold-webfont.woff2") format("woff2"), url("../fonts/opensans-bold-webfont.woff") format("woff"), url("../fonts/opensans-bold-webfont.ttf") format("truetype"), url("../fonts/opensans-bold-webfont.svg#open_sansbold") format("svg");
-  font-weight: bold;
-  font-style: normal; }
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 500;
+  src: local("Raleway Medium"), local("Raleway-Medium"), url(https://fonts.gstatic.com/s/raleway/v9/CcKI4k9un7TZVWzRVT-T8_k_vArhqVIZ0nv9q090hN8.woff2) format("woff2");
+  unicode-range: U0-0FF, U131, U152-153, U2C 6, U2DA, U2DC, U2000-206F, U2074, U20AC, U2212, U2215, UE0FF, UEFFD, UF000; }
 
+/* latin */
 @font-face {
-  font-family: 'open_sans';
-  src: url("../fonts/opensans-bolditalic-webfont.eot");
-  src: url("../fonts/opensans-bolditalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans-bolditalic-webfont.woff2") format("woff2"), url("../fonts/opensans-bolditalic-webfont.woff") format("woff"), url("../fonts/opensans-bolditalic-webfont.ttf") format("truetype"), url("../fonts/opensans-bolditalic-webfont.svg#open_sansbold_italic") format("svg");
-  font-weight: bold;
-  font-style: italic; }
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  src: local("Raleway SemiBold"), local("Raleway-SemiBold"), url(https://fonts.gstatic.com/s/raleway/v9/xkvoNo9fC8O2RDydKj12b_k_vArhqVIZ0nv9q090hN8.woff2) format("woff2");
+  unicode-range: U0-0FF, U131, U152-153, U2C 6, U2DA, U2DC, U2000-206F, U2074, U20AC, U2212, U2215, UE0FF, UEFFD, UF000; }
+
+/* latin */
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  src: local("Raleway Bold"), local("Raleway-Bold"), url(https://fonts.gstatic.com/s/raleway/v9/JbtMzqLaYbbbCL9X6EvaI_k_vArhqVIZ0nv9q090hN8.woff2) format("woff2");
+  unicode-range: U0-0FF, U131, U152-153, U2C 6, U2DA, U2DC, U2000-206F, U2074, U20AC, U2212, U2215, UE0FF, UEFFD, UF000; }
+
+.ui-view-container {
+  position: absolute;
+  width: 100vw;
+  height: 100vh; }
+
+[ui-view].ng-enter, [ui-view].ng-leave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  transition: all 0.5s ease-in-out; }
+
+.welcome [ui-view].ng-enter {
+  opacity: 0; }
+
+.checkin [ui-view].ng-enter {
+  opacity: 0;
+  -webkit-transform: translate3d(0, -2000px, 0);
+  transform: translate3d(0, -2000px, 0); }
+
+.encounter [ui-view].ng-enter {
+  -webkit-transform: translate3d(200px, 0, 0);
+  transform: translate3d(200px, 0, 0); }
+
+.report [ui-view].ng-enter {
+  opacity: 0;
+  -webkit-transform: translate3d(-200px, 0, 0);
+  transform: translate3d(-200px, 0, 0); }
+
+.welcome [ui-view].ng-enter-active {
+  opacity: 1; }
+
+.checkin [ui-view].ng-enter-active {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+
+.encounter [ui-view].ng-enter-active {
+  -opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+
+.report [ui-view].ng-enter-active {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+
+.welcome [ui-view].ng-leave {
+  opacity: 1; }
+
+.checkin [ui-view].ng-leave {
+  opacity: 1;
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1); }
+
+.encounter [ui-view].ng-leave {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+
+.report [ui-view].ng-leave {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+
+.welcome [ui-view].ng-leave-active {
+  opacity: 0; }
+
+.checkin [ui-view].ng-leave-active {
+  opacity: 0;
+  -webkit-transform: scale3d(0, 0, 0);
+  transform: scale3d(0, 0, 0); }
+
+.encounter [ui-view].ng-leave-active {
+  opacity: 0;
+  -webkit-transform: translate3d(-200px, 0, 0);
+  transform: translate3d(-200px, 0, 0); }
+
+.report [ui-view].ng-leave-active {
+  opacity: 0;
+  -webkit-transform: translate3d(200px, 0, 0);
+  transform: translate3d(200px, 0, 0); }
 
 /* Container used for styling the custom select, the buttom class below adds the bg gradient, corners, etc. */
 .custom-select {
@@ -171,7 +263,8 @@ h1, h2, h3 {
   color: #fff; }
 
 h1 {
-  font-size: 2rem; }
+  font-size: 2rem;
+  font-weight: 400; }
 
 h2 {
   font-size: 1.8rem; }
@@ -182,7 +275,7 @@ h3 {
 a {
   text-decoration: none;
   color: white;
-  font-family: 'Raleway', sans-serif; }
+  font-family: "Raleway", serif; }
 
 /*-----------------------------------------*/
 /* Welcome page */
@@ -211,9 +304,6 @@ body {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   height: 100vh; }
 
 .enter-button {
@@ -304,7 +394,7 @@ body {
   color: #ed4343;
   font-size: 1rem;
   padding-left: 0.5rem;
-  font-family: 'Raleway'; }
+  font-family: "Raleway", serif; }
 
 :-moz-placeholder {
   /* Mozilla Firefox 4 to 18 */
@@ -326,16 +416,40 @@ body {
   .custom-select select {
     font-size: 1rem;
     padding-left: 0.5rem;
-    font-family: 'Raleway'; }
+    font-family: "Raleway", serif; }
   .custom-select select.placeholder {
     color: #ed4343; }
 
+.show-errors {
+  transition: 0.5s linear all; }
+
 .show-errors input.ng-invalid, .show-errors textarea.ng-invalid, .show-errors .custom-select select.ng-invalid {
-  border: 2px solid red;
-  border-radius: 0; }
+  border-radius: 0;
+  -webkit-animation: show-errors 0.5s infinite;
+          animation: show-errors 0.5s infinite; }
+
+@-webkit-keyframes show-errors {
+  0% {
+    box-shadow: 0 0 0 0.2rem rgba(237, 67, 67, 0.1), 0 0 0 0.4rem rgba(237, 67, 67, 0.1), 0 0 0 0.5rem rgba(237, 67, 67, 0.1); }
+  50% {
+    box-shadow: 0 0 0 0.5rem rgba(237, 67, 67, 0.1), 0 0 0 0.7rem rgba(237, 67, 67, 0.1), 0 0 0 0.8rem rgba(237, 67, 67, 0.1); }
+  75% {
+    box-shadow: 0 0 0 0.3rem rgba(237, 67, 67, 0.1), 0 0 0 0.5rem rgba(237, 67, 67, 0.1), 0 0 0 0.9rem rgba(237, 67, 67, 0.1); }
+  100% {
+    box-shadow: 0 0 0 0.6rem rgba(237, 67, 67, 0.1), 0 0 0 0.8rem rgba(237, 67, 67, 0.1), 0 0 0 1rem rgba(237, 67, 67, 0.1); } }
+
+@keyframes show-errors {
+  0% {
+    box-shadow: 0 0 0 0.2rem rgba(237, 67, 67, 0.1), 0 0 0 0.4rem rgba(237, 67, 67, 0.1), 0 0 0 0.5rem rgba(237, 67, 67, 0.1); }
+  50% {
+    box-shadow: 0 0 0 0.5rem rgba(237, 67, 67, 0.1), 0 0 0 0.7rem rgba(237, 67, 67, 0.1), 0 0 0 0.8rem rgba(237, 67, 67, 0.1); }
+  75% {
+    box-shadow: 0 0 0 0.3rem rgba(237, 67, 67, 0.1), 0 0 0 0.5rem rgba(237, 67, 67, 0.1), 0 0 0 0.9rem rgba(237, 67, 67, 0.1); }
+  100% {
+    box-shadow: 0 0 0 0.6rem rgba(237, 67, 67, 0.1), 0 0 0 0.8rem rgba(237, 67, 67, 0.1), 0 0 0 1rem rgba(237, 67, 67, 0.1); } }
 
 .form, .form h1, .form h2 {
-  font-family: 'Raleway', sans-serif; }
+  font-family: "Raleway", serif; }
 
 .form h1 {
   font-size: 40px;
@@ -424,7 +538,7 @@ li {
   color: #fff;
   text-align: center;
   text-decoration: none;
-  font-family: 'Raleway', sans-serif; }
+  font-family: "Raleway", serif; }
 
 /*report*/
 .page-sub-heading-white {

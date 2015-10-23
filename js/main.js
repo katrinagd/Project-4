@@ -1,7 +1,7 @@
 
 // form
 
-var formApp = angular.module('formApp', ['ui.router'])
+var formApp = angular.module('formApp', ['ui.router','ngAnimate'])
 
 .config(['$stateProvider',
          '$urlRouterProvider',
@@ -19,7 +19,8 @@ var formApp = angular.module('formApp', ['ui.router'])
             $stateProvider
              .state('welcome', {
                 url: '/',
-                templateUrl: 'welcome.html'
+                templateUrl: 'welcome.html',
+                controller: 'welcomeController'
              })
 
 
@@ -31,7 +32,8 @@ var formApp = angular.module('formApp', ['ui.router'])
 
              .state('encounter', {
                 url: '/encounter', 
-                templateUrl: 'encounter.html'
+                templateUrl: 'encounter.html',
+                controller: 'encounterController'
              })
 
              .state('report', {
@@ -42,14 +44,22 @@ var formApp = angular.module('formApp', ['ui.router'])
 
 
 }])
-//  .run(['$rootScope', function($rootScope){
 
-// }])
+.run(['$rootScope', function($rootScope){
 
-    .controller('RegisterFormController', ['$scope', '$state', function($scope, $state) {
+}])
+
+.controller('welcomeController', ['$scope', '$rootScope', function($scope, $rootScope) {
+    $rootScope.pageClass = 'welcome';
+}])
+
+.controller('encounterController', ['$scope', '$rootScope', function($scope, $rootScope) {
+    $rootScope.pageClass = 'encounter';
+}])
+    .controller('RegisterFormController', ['$scope', '$rootScope', '$state', function($scope, $rootScope, $state) {
   
 
-
+        $rootScope.pageClass = 'checkin';
         $scope.submitRegistration = function(e, form){
         	e.preventDefault();
         	console.log(form);
@@ -70,10 +80,10 @@ if ($scope.form.$invalid){
 
 }])
 
-        .controller('ReportFormController', ['$scope', function($scope) {
+        .controller('ReportFormController', ['$scope', '$rootScope', function($scope, $rootScope) {
   
 
-
+        $rootScope.pageClass = 'report';
         $scope.submitReport = function(e, form){
         	e.preventDefault();
         	console.log(form);
