@@ -1,7 +1,7 @@
 
 // form
 
-var formApp = angular.module('formApp', ['ui.router','ngAnimate'])
+var formApp = angular.module('formApp', ['ui.router','ngAnimate', 'ngCookies'])
 
 .config(['$stateProvider',
          '$urlRouterProvider',
@@ -21,14 +21,24 @@ var formApp = angular.module('formApp', ['ui.router','ngAnimate'])
                 url: '/',
                 templateUrl: 'welcome.html',
                 controller: 'welcomeController'
+
+
              })
 
 
              .state('checkin', {
                 url: '/checkin', 
                 templateUrl: 'check-in.html',
-                controller: 'RegisterFormController'
-             })
+                controller: 'RegisterFormController',
+                resolve: {
+                        user: ['$cookies', function($cookies){
+                            if($cookies.getObject('mars_user')){
+                                $state.go('encounter');
+                            }
+                        }]
+                    }
+
+                })
 
              .state('encounter', {
                 url: '/encounter', 
@@ -49,15 +59,27 @@ var formApp = angular.module('formApp', ['ui.router','ngAnimate'])
 
 }])
 
-.controller('welcomeController', ['$scope', '$rootScope', function($scope, $rootScope) {
+.controller('welcomeController', ['$scope', '$rootScope','$http', '$cookies', function($scope, $rootScope, $http, $cookies) {
     $rootScope.pageClass = 'welcome';
+    $cookies.putObject('mars_user', undefined);
 }])
 
 .controller('encounterController', ['$scope', '$rootScope', function($scope, $rootScope) {
     $rootScope.pageClass = 'encounter';
 }])
-    .controller('RegisterFormController', ['$scope', '$rootScope', '$state', function($scope, $rootScope, $state) {
+    .controller('RegisterFormController', ['$scope', '$rootScope', '$state', '$http', '$cookies',  function($scope, $rootScope, $state, $http, $cookies) {
   
+var API_URL_GET_JOBS = "https://red-wdp-api.herokuapp.com/api/mars/jobs";
+var API_URL_CREATE_COLONIST = "https://red-wdp-api.herokuapp.com/api/mars/colonists";
+
+$scope.colonist ={};
+
+$http.get(API_URL_GET_JOBS).then (function(response){
+    
+    $scope.jobs = response.data.jobs;
+});
+
+
 
         $rootScope.pageClass = 'checkin';
         $scope.submitRegistration = function(e, form){
@@ -74,7 +96,18 @@ if ($scope.form.$invalid){
 	$scope.showErrors=true;
 } else {
 
-    $state.go('encounter');
+
+$http({ 
+    method: 'POST',
+    url: API_URL_CREATE_COLONIST,
+    data: { colonist: $scope.colonist }
+    
+}).then(function(response){
+     $cookies.putObject('mars_user', response.data.colonist);
+     $state.go('encounter');
+     // debugger;
+})
+  
 }
 };
 
@@ -89,8 +122,8 @@ if ($scope.form.$invalid){
         	console.log(form);
         }
 
-        // // we will store our form data in this object
-        // $scope.formData = {};
+        
+
         $scope.showerrors=false;
 $scope.submitForm= function(){
 

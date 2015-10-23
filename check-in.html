@@ -11,29 +11,28 @@
 
            <!-- name -->
 
-            <div class="field" ng-class="{ 'has-error' : errorname }"><input type="text" id="name" name="name" ng-minlength="3" ng-maxlength="140" placeholder="Name" ng-model="formData.name" required>
+            <div class="field" ng-class="{ 'has-error' : errorname }"><input type="text" id="name" name="name" ng-minlength="3" ng-maxlength="140" placeholder="Name" ng-model="colonist.name" required>
             
             </div>           
 
            <!-- Age -->
 
-            <div class="field"><input type="number" id="age" name="age" placeholder="Age"  ng-model="formData.Age" ng-number required>
+            <div class="field"><input type="number" id="age" name="age" placeholder="Age"  ng-model="colonist.age" ng-number required>
             </div>
           
             <!-- occupation -->
 
             <div class="field">
               <div class="custom-select">
-                <select id="occupation" required ng-model="formData.occupation">
+                <select id="occupation" required ng-model="colonist.job_id">
                 <option value="">Select occupation</option>
-                <option value="Janitor">Janitor</option>
-                <option value="Alient hunter">Alient hunter</option>
-                <option value="Dust farmer">Dust farmer</option>
-                <option value="Battery technitian">Battery technitian</option>
-                <option value="Yoga teacher">Yoga teacher</option>
+
+                <option value="{{job.id}}" ng-repeat="job in jobs">{{job.name}}</option>
+
               </select>
             </div>
               </div>
+
  <!-- check in -->
             <div class="button"><input  type="submit" id="Check-in" name="Check in" value="Submit"></div>
         </div>
