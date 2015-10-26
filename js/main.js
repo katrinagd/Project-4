@@ -116,6 +116,19 @@ $http({
         .controller('ReportFormController', ['$scope', '$rootScope', function($scope, $rootScope) {
   
 
+// var ALIEN_TYPE_API_URL = "https://red-wdp-api.herokuapp.com/api/mars/aliens";
+// var ENCOUNTERS_API_URL = 'https://red-wdp-api.herokuapp.com/api/mars/encounters';
+
+// $scope.alient ={};
+
+// $http.get(ALIEN_TYPE_API_URL).then (function(response){
+    
+//     $scope.jobs = response.data.aliens;
+// });
+
+
+
+
         $rootScope.pageClass = 'report';
         $scope.submitReport = function(e, form){
         	e.preventDefault();

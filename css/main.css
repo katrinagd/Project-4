@@ -277,6 +277,9 @@ a {
   color: white;
   font-family: "Raleway", serif; }
 
+[ng-click]:hover {
+  cursor: pointer; }
+
 /*-----------------------------------------*/
 /* Welcome page */
 /*-----------------------------------------*/
@@ -365,7 +368,6 @@ body {
   border-style: solid;
   color: #ed4343;
   font-size: 14px;
-  margin: 5px;
   background-color: #000000;
   padding: 10px 20px 30px 20px; }
 
@@ -377,7 +379,7 @@ body {
   width: 13px; }
 
 .form input {
-  line-height: 1.5rem; }
+  line-height: 1.3rem; }
 
 .form div {
   display: block; }
@@ -534,11 +536,26 @@ li {
 
 .button {
   padding: 0.5rem 0.5rem;
+  width: 100%;
   background: #ed4343;
   color: #fff;
   text-align: center;
   text-decoration: none;
-  font-family: "Raleway", serif; }
+  font-family: "Raleway", serif;
+  margin: 25vh 0 0 0; }
+
+.button-encounter {
+  height: 3rem;
+  background: #ed4343;
+  font-size: 1rem;
+  font-weight: 300;
+  color: white;
+  width: 100%;
+  text-align: center;
+  border: none;
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  margin: 0 auto; }
 
 /*report*/
 .page-sub-heading-white {

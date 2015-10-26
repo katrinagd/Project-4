@@ -1,7 +1,7 @@
 @import "reset";
 @import "fonts";
 @import "variables";
-@import "animations";
+@import "animation";
 @import "custom.select";
 /*-----------------------------------------*/
 /* Extra Resetting */
@@ -162,7 +162,6 @@ body {
     border-style: solid; 
     color: $red-color; 
     font-size: 14px; 
-    margin: 5px; 
     background-color: #000000; 
     padding: 10px 20px 30px 20px; 
 } 
@@ -176,7 +175,7 @@ body {
 } 
 
 .form input {
-  line-height: 1.5rem;
+  line-height: 1.3rem;
 }
 .form div{ 
     display: block; 
@@ -376,14 +375,29 @@ li {
 }
 .button {
     padding: 0.5rem 0.5rem;
+    width: 100%;
     background: $red-color;
     color: #fff;
     text-align: center;
     text-decoration: none;
     font-family: $font;
+    margin: 25vh 0 0 0;
 }
 
+.button-encounter {
+  height: 3rem;
+  background: $red-color;
+  font-size: 1rem;
+  font-weight: 300;
+  color: white; 
+  width: 100%;
+  text-align: center;
+  border: none;
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  margin: 0 auto;
 
+}
 
 /*report*/
 
