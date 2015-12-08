@@ -1,46 +1,35 @@
 <div class="wrapper">
- <div class="site-container check-in">
-    
-<!-- FORM -->
+    <div class="site-container check-in">
 
-  <form id="form" class="form" name="form" ng-submit="submitForm(form.$valid)" novalidate method="post" target="#" enctype="text/plain" accept-charset="UTF-8" ng-class="{'show-errors':showErrors}">
-    <h1>Report Encounter</h1>
-    <h3 class="page-sub-heading-white">Saftey on Mars is your responsibility</h3>
-    <div class="content">
-        
-        <div id="section0" >
+        <!-- FORM -->
 
-           <!-- alient type -->
-<div class="field">
-        <div class="custom-select">
-              <select id="alientType" ng-model="formData.alientType" required>
-                <option value="">Select alient type</option>
-                <option value="Lizard Man">Lizard Man</option>
-                <option value="Giant Slug">Giant Slug</option>
-                <option value="Rogue Android">Rogue Android</option>
-                <option value="Octospider">Octospider</option>
-                <option value="Spiderpus">Spiderpus</option>
-        </select></div></div>
-                
-            <!-- alient type -->
-<!-- <div class="field">
-        <div class="custom-select">
-              <select id="alientType" ng-model="alient.type_id" required>
-                <option value="">Select alient type</option>
-                <option value="{{aliens.id}}" ng-repeat="alient in alients">{{alient.name}}</option>
-        </select></div></div>
-              
-              </div> -->
+        <form id="form" class="form" name="reportForm" ng-submit="submitReport($event,reportForm)" novalidate target="#" ng-class="{'show-errors':showErrors}">
+            <h1>Report Encounter</h1>
+            <h3 class="page-sub-heading-white">Saftey on Mars is your responsibility</h3>
+            <div class="content">
+                <div id="section0">
+                    <!-- alien type -->
+                    <div class="field" ng-class="{ 'has-error' : showErrors }">
+                        <div class="custom-select">
+                            <select name="alien" select id="alienType" ng-model="report.atype" required ng-class="{placeholder: !alien.id}">
+                                <option value="">Select alien type</option>
+                                <option value="{{alien.id}}" ng-repeat="alien in aliens">{{alien.type}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
 
-              <!-- action taken -->
+                <!-- action taken -->
 
-          <textarea ng-class="{ 'has-error' : erroraction }"placeholder="Action taken" ng-model="formData.action" name="action" id="action" rows="10" required=""></textarea>
-                     
+                <textarea ng-class="{ 'has-error' : showErrors }" placeholder="Action taken" ng-model="report.action" name="action" id="action" rows="10" required=""></textarea>
+                <!-- check in -->
 
- <!-- check in -->
-            <div class="button"><label for="Submit"></label><input  type="submit" id="Submit-Report" name="Submit Report" value="Submit"></div>
-        </div>
-    </div> 
-</form>
-
-</div></div>
+                <div class="button-report">
+                   <!--  <label for="Submit"></label> -->
+                    <input type="submit" id="Submit-Report" name="Submit Report" value="Submit">
+                </div>
+            </div>
+    </div>
+    </form>
+</div>
+</div>

@@ -1,43 +1,33 @@
 <div class="wrapper">
-
-<div class="site-container check-in">
-  
-<!-- FORM -->
-
-          <form id="form" class="form" name="form" ng-submit="submitForm(form.$valid)" novalidate ng-class="{'show-errors':showErrors}">
-    <h1>Who are you?</h1>
-    <div class="content">
-            <div id="section0" >
-
-           <!-- name -->
-
-            <div class="field" ng-class="{ 'has-error' : errorname }"><input type="text" id="name" name="name" ng-minlength="3" ng-maxlength="140" placeholder="Name" ng-model="colonist.name" required>
-            
-            </div>           
-
-           <!-- Age -->
-
-            <div class="field"><input type="number" id="age" name="age" placeholder="Age"  ng-model="colonist.age" ng-number required>
+    <div class="site-container check-in">
+        <!-- FORM -->
+        <form id="form" class="form" name="form" ng-submit="submitForm(form.$valid)" novalidate ng-class="{'show-errors':showErrors}">
+            <h1>Who are you?</h1>
+            <div class="content">
+                <div id="section0">
+                    <!-- name -->
+                    <div class="field" ng-class="{ 'has-error' : errorname }">
+                        <input type="text" id="name" name="name" ng-minlength="3" ng-maxlength="140" placeholder="Name" ng-model="colonist.name" required>
+                    </div>
+                    <!-- Age -->
+                    <div class="field">
+                        <input type="number" id="age" name="age" placeholder="Age" ng-model="colonist.age" ng-number required>
+                    </div>
+                    <!-- occupation -->
+                    <div class="field">
+                        <div class="custom-select">
+                            <select id="occupation" required ng-model="colonist.job_id">
+                                <option value="">Select occupation</option>
+                                <option value="{{job.id}}" ng-repeat="job in jobs">{{job.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- check in -->
+                    <div class="button">
+                        <input type="submit" id="Check-in" name="Check in" value="Submit">
+                    </div>
+                </div>
             </div>
-          
-            <!-- occupation -->
-
-            <div class="field">
-              <div class="custom-select">
-                <select id="occupation" required ng-model="colonist.job_id">
-                <option value="">Select occupation</option>
-
-                <option value="{{job.id}}" ng-repeat="job in jobs">{{job.name}}</option>
-
-              </select>
-            </div>
-              </div>
-
- <!-- check in -->
-     <div class="button"><input  type="submit" id="Check-in" name="Check in" value="Submit"></div>
-        </div>
-
+        </form>
     </div>
-</form>
-  </div>
 </div>
