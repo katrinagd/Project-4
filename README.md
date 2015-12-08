@@ -4,7 +4,7 @@
 
 AngularJS App with mobile-first responsive layout using Flexbox (Mobile only)
 
-Deployed version of the project [(as a GitHub page)](http://xx)
+Deployed version of the project [(as a GitHub page)](http://katrinagd.github.io/p4-mars-colony-hybrid-app/)
 
 * Goals:
  * Use Angular’s ng-touch directive to implement swipe-left and swipe-right navigation.
